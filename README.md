@@ -14,7 +14,7 @@
 
 ## Installation
 
-**Node.js 12.0 or newer is required.**
+**Node.js 12.x or newer is required.**
 
 ```shell
 npm install endb
@@ -27,7 +27,7 @@ Officially supported adapters are MongoDB, Redis, MySQL, PostgreSQL, and SQLite.
 npm install mongodb
 npm install redis
 
-# To use SQL-based databases, an additional package 'sql' must be installed and an adapter
+# To use SQL-based databases, an additional package 'sql' must be installed with the driver.
 npm install sql
 
 npm install mysql2 # MySQL
