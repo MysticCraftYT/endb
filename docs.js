@@ -39,7 +39,7 @@ Docma.create()
 					},
 					{
 						label: 'GitHub',
-						href: Package.repository,
+						href: `https://github.com/${Package.repository.split(':')[1]}`,
 						target: '_blank',
 						iconClass: 'ico-md ico-github'
 					}
