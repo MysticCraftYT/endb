@@ -397,12 +397,13 @@ class Endb extends EventEmitter {
 	 * await endb.set('profile', 100, 'balance');
 	 */
 	async set(key, value, path = null) {
-		key = this._addKeyPrefix(key);
 		const {store, serialize} = this.options;
 		if (path !== null) {
-			value = _set((await this.get(key)) || {}, path, value);
+			const value_ = await this.get(key);
+			value = _set(value_ || {}, path, value);
 		}
 
+		key = this._addKeyPrefix(key);
 		await store.set(key, serialize(value));
 		return true;
 	}
