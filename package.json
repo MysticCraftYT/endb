@@ -83,7 +83,8 @@
       "guard-for-in": 0,
       "no-negated-condition": 0,
       "no-await-in-loop": 0,
-      "unicorn/explicit-length-check": 0
+      "unicorn/explicit-length-check": 0,
+      "unicorn/no-fn-reference-in-iterator": 0
     }
   }
 }
