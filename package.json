@@ -7,9 +7,7 @@
   "files": [
     "src",
     "typings",
-    "esm",
-    "*.js",
-    "!docs.js"
+    "esm"
   ],
   "exports": {
     ".": [
