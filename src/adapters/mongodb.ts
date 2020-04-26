@@ -1,5 +1,7 @@
 'use strict';
 
+import {Element} from '../Endb';
+
 const EventEmitter = require('events');
 const mongodb = require('mongodb');
 
@@ -30,7 +32,7 @@ module.exports = class MongoDB extends EventEmitter {
 		});
 	}
 
-	async all() {
+	async all(): Promise<Element[]> {
 		const collection = await this.db;
 		return collection.find({key: new RegExp(`^${this.namespace}:`)}).toArray();
 	}

@@ -4,7 +4,12 @@ const {promisify} = require('util');
 const sqlite3 = require('sqlite3');
 const Sql = require('./sql');
 
-module.exports = class SQLite extends Sql {
+export interface EndbSqliteOptions {
+	uri?: string;
+	table: string;
+}
+
+export default class EndbSqlite extends Sql {
 	constructor(options = {}) {
 		const {uri = 'sqlite://:memory:'} = options;
 		const path = uri.replace(/^sqlite:\/\//, '');

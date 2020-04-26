@@ -2,23 +2,12 @@
   "name": "endb",
   "version": "0.22.9",
   "description": "Simple key-value storage with support for multiple backends.",
-  "main": "src/index.js",
-  "typings": "typings/index.d.ts",
+  "main": "dist/index.js",
+  "typings": "dist/index.d.ts",
   "files": [
     "src",
-    "typings",
-    "esm"
+    "typings"
   ],
-  "exports": {
-    ".": [
-      {
-        "require": "./src/index.js",
-        "import": "./esm/index.mjs"
-      },
-      "./src/index.js"
-    ],
-    "./esm": "./esm/index.mjs"
-  },
   "scripts": {
     "lint": "xo src",
     "lint:fix": "xo src --fix",
@@ -46,6 +35,9 @@
   "devDependencies": {
     "@commitlint/cli": "^8.3.5",
     "@commitlint/config-conventional": "^8.3.4",
+    "@types/buffer-json": "^2.0.0",
+    "@types/lodash": "^4.14.150",
+    "@types/node": "^13.13.2",
     "ava": "^3.7.1",
     "docma": "^3.2.2",
     "lint-staged": "^10.1.6",
@@ -55,6 +47,7 @@
     "redis": "^3.0.2",
     "sql": "^0.78.0",
     "sqlite3": "^4.1.1",
+    "typescript": "^3.8.3",
     "xo": "^0.30.0"
   },
   "commitlint": {
