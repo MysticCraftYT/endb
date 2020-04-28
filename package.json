@@ -80,6 +80,18 @@
   "lint-staged": {
     "*.js": "npm run lint:fix"
   },
+  "jest": {
+    "clearMocks": true,
+    "coverageDirectory": "coverage",
+    "testEnvironment": "node",
+    "transform": {
+      "^.+\\.ts?$": "ts-jest"
+    },
+    "testRegex": "/test/.*\\.(test|spec)?\\.(ts|tsx)$",
+    "moduleFileExtensions": [
+      "ts"
+    ]
+  },
   "eslintConfig": {
     "root": true,
     "parser": "@typescript-eslint/parser",
