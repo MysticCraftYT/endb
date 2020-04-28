@@ -44,8 +44,6 @@
     "lodash": "^4.17.15"
   },
   "devDependencies": {
-    "@commitlint/cli": "^8.3.5",
-    "@commitlint/config-conventional": "^8.3.4",
     "ava": "^3.7.1",
     "docma": "^3.2.2",
     "lint-staged": "^10.1.6",
@@ -57,15 +55,9 @@
     "sqlite3": "^4.1.1",
     "xo": "^0.30.0"
   },
-  "commitlint": {
-    "extends": [
-      "@commitlint/config-conventional"
-    ]
-  },
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged",
-      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+      "pre-commit": "lint-staged"
     }
   },
   "lint-staged": {
