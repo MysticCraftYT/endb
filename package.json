@@ -10,7 +10,7 @@
   "scripts": {
     "test": "jest",
     "coverage": "jest --coverage",
-    "lint": "eslint . --ext .ts --ignore-path .gitignore --format pretty",
+    "lint": "eslint . --ext .ts --ignore-path .gitignore",
     "lint:fix": "npm run lint -- --fix",
     "build": "rimraf dist && tsc",
     "build:docs": "typedoc",
@@ -63,6 +63,7 @@
     "sql-ts": "^3.0.1",
     "sqlite3": "^4.1.1",
     "ts-jest": "^25.4.0",
+    "typedoc": "^0.17.6",
     "typescript": "^3.8.3"
   },
   "commitlint": {
