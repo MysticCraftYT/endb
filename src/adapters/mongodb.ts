@@ -1,21 +1,28 @@
 'use strict';
 
-import {Element} from '../Endb';
+import {EventEmitter} from 'events';
+import {MongoClient, Collection} from 'mongodb';
+import {EndbAdapter, Element} from '..';
 
-const EventEmitter = require('events');
-const mongodb = require('mongodb');
+export interface EndbMongoOptions {
+	uri?: string;
+	url: string;
+	collection: string;
+}
 
-module.exports = class MongoDB extends EventEmitter {
-	constructor(options = {}) {
+export default class EndbMongo<TVal> extends EventEmitter implements EndbAdapter<TVal> {
+	public namespace!: string;
+	public options: EndbMongoOptions;
+	public db: Promise<Collection<Element<string>>>;
+	constructor(options: Partial<EndbMongoOptions> = {}) {
 		super();
-		options.url = options.uri || undefined;
 		this.options = {
 			url: 'mongodb://127.0.0.1:27017',
 			collection: 'endb',
 			...options
 		};
-		this.db = new Promise((resolve) => {
-			mongodb.MongoClient.connect(this.options.url, (error, client) => {
+		this.db = new Promise<Collection<Element<string>>>((resolve) => {
+			MongoClient.connect(this.options.url, (error, client) => {
 				if (error !== null) return this.emit('error', error);
 				const db = client.db();
 				const collection = db.collection(this.options.collection);
@@ -32,39 +39,36 @@ module.exports = class MongoDB extends EventEmitter {
 		});
 	}
 
-	async all(): Promise<Element[]> {
+	public async all(): Promise<Element<string>[]> {
 		const collection = await this.db;
 		return collection.find({key: new RegExp(`^${this.namespace}:`)}).toArray();
 	}
 
-	async clear() {
+	public async clear(): Promise<void> {
 		const collection = await this.db;
 		await collection.deleteMany({key: new RegExp(`^${this.namespace}:`)});
 	}
 
-	async close() {
-		return this.client.close();
-	}
-
-	async delete(key) {
+	public async delete(key: string): Promise<boolean> {
 		if (typeof key !== 'string') return false;
 		const collection = await this.db;
 		const {deletedCount} = await collection.deleteOne({key});
 		return deletedCount !== undefined && deletedCount > 0;
 	}
 
-	async get(key) {
+	public async get(key: string): Promise<void | string> {
 		const collection = await this.db;
 		const doc = await collection.findOne({key});
 		return doc === null ? undefined : doc.value;
 	}
 
-	async has(key) {
+	public async has(key: string): Promise<boolean> {
 		const collection = await this.db;
-		return collection.find({key}).count() > 0;
+		const exists = (await collection.find({key}).count()) > 0;
+		return exists;
 	}
 
-	async set(key, value) {
+	public async set(key: string, value: string): Promise<unknown> {
 		const collection = await this.db;
 		return collection.replaceOne({key}, {key, value}, {upsert: true});
 	}

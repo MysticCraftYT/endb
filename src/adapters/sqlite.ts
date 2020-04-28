@@ -1,16 +1,17 @@
-'use strict';
-
-const {promisify} = require('util');
-const sqlite3 = require('sqlite3');
-const Sql = require('./sql');
+import {promisify} from 'util';
+import sqlite3 from 'sqlite3';
+import {EndbAdapter} from '..';
+import EndbSql from './sql';
 
 export interface EndbSqliteOptions {
 	uri?: string;
-	table: string;
+	table?: string;
+	keySize?: number;
+	busyTimeout?: number;
 }
 
-export default class EndbSqlite extends Sql {
-	constructor(options = {}) {
+export default class EndbSqlite<TVal> extends EndbSql<TVal> implements EndbAdapter<TVal> {
+	constructor(options: EndbSqliteOptions = {}) {
 		const {uri = 'sqlite://:memory:'} = options;
 		const path = uri.replace(/^sqlite:\/\//, '');
 		super({
@@ -33,4 +34,4 @@ export default class EndbSqlite extends Sql {
 			...options
 		});
 	}
-};
+}

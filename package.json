@@ -3,25 +3,32 @@
   "version": "0.22.9",
   "description": "Simple key-value storage with support for multiple backends.",
   "main": "dist/index.js",
-  "typings": "dist/index.d.ts",
+  "types": "dist/index.d.ts",
   "files": [
-    "src",
-    "typings"
+    "dist"
   ],
   "scripts": {
-    "lint": "xo src",
-    "lint:fix": "xo src --fix",
-    "test": "ava --serial",
+    "test": "jest",
+    "coverage": "jest --coverage",
+    "lint": "eslint . --ext .ts --ignore-path .gitignore --format pretty",
+    "lint:fix": "npm run lint -- --fix",
+    "build": "rimraf dist && tsc",
+    "build:docs": "typedoc",
     "test:docker": "docker-compose up --build --abort-on-container-exit --exit-code-from test",
     "posttest:docker": "docker-compose down --rmi local",
-    "docs:build": "node docs.js",
-    "prepublishOnly": "npm run lint && ava test/index.js"
+    "prepublishOnly": "npm run lint:fix && npm run build && ava test/index.js"
   },
   "keywords": [
     "endb",
     "key-value",
     "cache",
-    "javascript"
+    "javascript",
+    "nodejs",
+    "mongodb",
+    "mysql",
+    "postgresql",
+    "redis",
+    "sqlite"
   ],
   "license": "MIT",
   "author": "chroventer (https://github.com/chroventer)",
@@ -34,25 +41,34 @@
   },
   "devDependencies": {
     "@commitlint/cli": "^8.3.5",
-    "@commitlint/config-conventional": "^8.3.4",
+    "@commitlint/config-angular": "^8.3.4",
     "@types/buffer-json": "^2.0.0",
+    "@types/jest": "^25.2.1",
     "@types/lodash": "^4.14.150",
-    "@types/node": "^13.13.2",
-    "ava": "^3.7.1",
-    "docma": "^3.2.2",
+    "@types/mongodb": "^3.5.14",
+    "@types/mysql2": "github:types/mysql2",
+    "@types/node": "^13.13.4",
+    "@types/pg": "^7.14.3",
+    "@types/redis": "^2.8.18",
+    "@types/sqlite3": "^3.1.6",
+    "@typescript-eslint/eslint-plugin": "^2.29.0",
+    "@typescript-eslint/parser": "^2.29.0",
+    "eslint": "^6.8.0",
+    "jest": "^25.4.0",
     "lint-staged": "^10.1.6",
     "mongodb": "^3.5.6",
     "mysql2": "^2.1.0",
     "pg": "^8.0.2",
     "redis": "^3.0.2",
-    "sql": "^0.78.0",
+    "rimraf": "^3.0.2",
+    "sql-ts": "^3.0.1",
     "sqlite3": "^4.1.1",
-    "typescript": "^3.8.3",
-    "xo": "^0.30.0"
+    "ts-jest": "^25.4.0",
+    "typescript": "^3.8.3"
   },
   "commitlint": {
     "extends": [
-      "@commitlint/config-conventional"
+      "@commitlint/config-angular"
     ]
   },
   "husky": {
@@ -64,20 +80,21 @@
   "lint-staged": {
     "*.js": "npm run lint:fix"
   },
-  "ava": {
-    "timeout": "30s",
-    "files": [
-      "!test/functions.js"
-    ]
-  },
-  "xo": {
-    "prettier": true,
+  "eslintConfig": {
+    "root": true,
+    "parser": "@typescript-eslint/parser",
+    "plugins": [
+      "@typescript-eslint"
+    ],
+    "extends": [
+      "eslint:recommended",
+      "plugin:@typescript-eslint/eslint-recommended",
+      "plugin:@typescript-eslint/recommended"
+    ],
     "rules": {
-      "guard-for-in": 0,
-      "no-negated-condition": 0,
-      "no-await-in-loop": 0,
-      "unicorn/explicit-length-check": 0,
-      "unicorn/no-fn-reference-in-iterator": 0
+      "@typescript-eslint/no-explicit-any": "off",
+      "@typescript-eslint/no-non-null-assertion": "off",
+      "@typescript-eslint/no-namespace": "off"
     }
   }
 }

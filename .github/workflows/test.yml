@@ -10,3 +10,6 @@ jobs:
         run: npm run test:docker
       - name: Posttest
         run: npm run posttest:docker
+      - name: Coverage
+        if: success()
+        run: npm run coverage

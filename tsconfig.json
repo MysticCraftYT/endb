@@ -9,5 +9,12 @@
     "strict": true,
     "moduleResolution": "node",
     "esModuleInterop": true
-  }
+  },
+  "typedocOptions": {
+    "name": "Endb",
+    "readme": "README.md",
+    "out": "docs",
+    "hideGenerator": true
+  },
+  "include": ["src", "test"]
 }

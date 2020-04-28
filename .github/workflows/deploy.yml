@@ -9,11 +9,11 @@ jobs:
       - name: Install Node
         uses: actions/setup-node@master
         with:
-          node-version: 12
+          node-version: 13
       - name: Installation
         run: npm install
       - name: Build documentation
-        run: 'npm run docs:build'
+        run: 'npm run build:docs'
       - name: Deploy documentation
         if: success()
         uses: crazy-max/ghaction-github-pages@v1

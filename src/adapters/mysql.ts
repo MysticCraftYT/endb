@@ -1,21 +1,26 @@
-'use strict';
+import mysql from 'mysql2/promise';
+import {EndbAdapter} from '..';
+import EndbSql from './sql';
 
-const mysql = require('mysql2/promise');
-const Sql = require('./sql');
+export interface EndbMysqlOptions {
+	uri?: string;
+	table?: string;
+	keySize?: number;
+}
 
-module.exports = class MySQL extends Sql {
-	constructor(options = {}) {
+export default class EndbMysql<TVal> extends EndbSql<TVal> implements EndbAdapter<TVal> {
+	constructor(options: EndbMysqlOptions = {}) {
 		const {uri = 'mysql://localhost'} = options;
 		super({
 			dialect: 'mysql',
 			async connect() {
 				const connection = await mysql.createConnection(uri);
-				return async (sqlString) => {
-					const [row] = await connection.execute(sqlString);
+				return async (sql: string): Promise<unknown> => {
+					const [row] = await connection.execute(sql);
 					return row;
 				};
 			},
 			...options
 		});
 	}
-};
+}
