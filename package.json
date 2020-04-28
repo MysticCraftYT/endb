@@ -22,11 +22,12 @@
   "scripts": {
     "lint": "xo src",
     "lint:fix": "xo src --fix",
-    "test": "ava --serial",
+    "test": "nyc && ava --serial",
+    "coverage": "nyc report --reporter=text-lcov | coveralls",
     "test:docker": "docker-compose up --build --abort-on-container-exit --exit-code-from test",
     "posttest:docker": "docker-compose down --rmi local",
     "docs:build": "node docs.js",
-    "prepublishOnly": "npm run lint && ava test/index.js"
+    "prepublishOnly": "npm run lint && nyc ava test/index.js"
   },
   "keywords": [
     "endb",
@@ -45,23 +46,16 @@
   },
   "devDependencies": {
     "ava": "^3.7.1",
+    "coveralls": "^3.1.0",
     "docma": "^3.2.2",
-    "lint-staged": "^10.1.6",
     "mongodb": "^3.5.6",
     "mysql2": "^2.1.0",
+    "nyc": "^15.0.1",
     "pg": "^8.0.2",
     "redis": "^3.0.2",
     "sql": "^0.78.0",
     "sqlite3": "^4.1.1",
     "xo": "^0.30.0"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
-  "lint-staged": {
-    "*.js": "npm run lint:fix"
   },
   "ava": {
     "timeout": "30s",
