@@ -43,6 +43,9 @@ const loadStore = <TVal>(
   throw new Error(`[Endb]: Invalid adapter provided "${adapter}"`);
 };
 
+/**
+ * 
+ */
 class Endb<TVal> extends EventEmitter {
   public readonly options: Endb.EndbOptions<TVal>;
   public constructor(options: Partial<Endb.EndbOptions<TVal>> = {}) {
@@ -62,6 +65,10 @@ class Endb<TVal> extends EventEmitter {
     this.options.store.namespace = this.options.namespace;
   }
 
+  /**
+   * Gets all the elements from the database.
+   * @return All the elements in the database.
+   */
   public async all(): Promise<Endb.Element<TVal>[]> {
     const { store, deserialize } = this.options;
     const elements = [];
@@ -87,11 +94,20 @@ class Endb<TVal> extends EventEmitter {
     return elements;
   }
 
+  /**
+   * Clears all elements from the database.
+   */
   public async clear(): Promise<void> {
     const { store } = this.options;
     await store.clear();
   }
 
+  /**
+   * Deletes an element or a property of an element from the database by key.
+   * @param key The key of the element.
+   * @param path The path of the property to delete from the element.
+   * @return `true` if the element or the property is deleted successfully, otherwise `false`.
+   */
   public async delete(key: string, path?: string): Promise<boolean> {
     if (typeof path === 'string') {
       let value = await this.get(key);
@@ -118,11 +134,20 @@ class Endb<TVal> extends EventEmitter {
     return store.delete(key);
   }
 
+  /**
+   * @return An array containing the key and the value of all the elements.
+   */
   async entries(): Promise<Array<[string, any]>> {
     const elements = await this.all();
     return elements.map(({ key, value }: Endb.Element<TVal>) => [key, value]);
   }
 
+  /**
+   * Gets the value of an element or a property in the value by key.
+   * @param key The key of the element.
+   * @param path The path of the property to get from the value.
+   * @return The value of the element or the property of the value.
+   */
   public async get(key: string, path?: string): Promise<void | TVal> {
     key = this._addKeyPrefix(key);
     const { store, deserialize } = this.options;
@@ -133,6 +158,12 @@ class Endb<TVal> extends EventEmitter {
     return deserialized;
   }
 
+  /**
+   * Checks whether an element or the property in the value exists or not.
+   * @param key The key of the element.
+   * @param path The path of the property to check for in the value.
+   * @return `true` if the element or the property in the value exists, otherwise `false`.
+   */
   async has(key: string, path?: string): Promise<boolean> {
     if (typeof path === 'string') {
       const value = await this.get(key);
@@ -145,11 +176,21 @@ class Endb<TVal> extends EventEmitter {
     return exists;
   }
 
+  /**
+   * Returns an array that contains the keys of each element.
+   * @return An array that contains the keys of each element.
+   */
   public async keys(): Promise<string[]> {
     const elements = await this.all();
     return elements.map(({ key }: Endb.Element<TVal>) => key);
   }
 
+  /**
+   * Sets an element to the database.
+   * @param key The key of the element to set.
+   * @param value The value of the element or the value of the property to set.
+   * @param path The path of the property to set in the value.
+   */
   public async set(key: string, value: any, path?: string): Promise<boolean> {
     const { store, serialize } = this.options;
     if (typeof path === 'string') {
@@ -162,6 +203,10 @@ class Endb<TVal> extends EventEmitter {
     return true;
   }
 
+  /**
+   * Returns an array that contains the values of each element.
+   * @return Array that contains the values of each element.
+   */
   public async values(): Promise<any[]> {
     const elements = await this.all();
     return elements.map(({ value }: Endb.Element<TVal>) => value);
