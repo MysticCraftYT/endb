@@ -2,7 +2,7 @@ import { EventEmitter } from 'events';
 import { Sql } from 'sql-ts';
 import { SQLDialects } from 'sql-ts/dist/configTypes';
 import { TableWithColumns } from 'sql-ts/dist/table';
-import { EndbAdapter, Element } from '..';
+import { EndbAdapter, Element } from '../endb';
 
 export interface EndbSqlOptions {
   dialect: SQLDialects;

@@ -2,7 +2,7 @@
 
 import { EventEmitter } from 'events';
 import { MongoClient, Collection } from 'mongodb';
-import { EndbAdapter, Element } from '..';
+import { EndbAdapter, Element } from '../endb';
 
 export interface EndbMongoOptions {
   uri?: string;

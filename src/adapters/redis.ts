@@ -1,7 +1,7 @@
 import { EventEmitter } from 'events';
 import { promisify } from 'util';
 import redis from 'redis';
-import { EndbAdapter, Element } from '..';
+import { EndbAdapter, Element } from '../endb';
 
 interface Client {
   del: (...keys: string[]) => Promise<number>;

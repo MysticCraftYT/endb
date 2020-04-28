@@ -1,6 +1,6 @@
 import { promisify } from 'util';
 import sqlite3 from 'sqlite3';
-import { EndbAdapter } from '..';
+import { EndbAdapter } from '../endb';
 import EndbSql from './sql';
 
 export interface EndbSqliteOptions {

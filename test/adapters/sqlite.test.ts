@@ -1,4 +1,4 @@
-import Endb from '../../src';
+import Endb from '../../src/endb';
 import { adapterTest, endbTest } from '../functions';
 
 adapterTest(Endb, 'sqlite://test.sqlite');

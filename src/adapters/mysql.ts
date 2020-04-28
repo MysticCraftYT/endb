@@ -1,5 +1,5 @@
 import mysql from 'mysql2/promise';
-import { EndbAdapter } from '..';
+import { EndbAdapter } from '../endb';
 import EndbSql from './sql';
 
 export interface EndbMysqlOptions {

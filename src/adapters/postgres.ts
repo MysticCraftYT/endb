@@ -1,7 +1,7 @@
 'use strict';
 
 import { Pool } from 'pg';
-import { EndbAdapter } from '..';
+import { EndbAdapter } from '../endb';
 import EndbSql from './sql';
 
 export interface EndbPostgresOptions {

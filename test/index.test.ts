@@ -1,4 +1,4 @@
-import Endb from '../src';
+import Endb from '../src/endb';
 import 'jest';
 
 test('Endb is a class', async () => {
