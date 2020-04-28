@@ -1,5 +1,18 @@
 {
   "name": "endb",
+  "jest": {
+    "clearMocks": true,
+    "coverageDirectory": "coverage",
+    "testEnvironment": "node",
+    "transform": {
+      "^.+\\.ts?$": "ts-jest"
+    },
+    "testRegex": "/test/.*\\.(test|spec)?\\.(ts|tsx)$",
+    "moduleFileExtensions": [
+      "ts",
+      "js"
+    ]
+  },
   "version": "0.22.9",
   "description": "Simple key-value storage with support for multiple backends.",
   "main": "dist/index.js",
@@ -71,19 +84,6 @@
   },
   "lint-staged": {
     "*.js": "npm run lint:fix"
-  },
-  "jest": {
-    "clearMocks": true,
-    "coverageDirectory": "coverage",
-    "testEnvironment": "node",
-    "transform": {
-      "^.+\\.ts?$": "ts-jest"
-    },
-    "testRegex": "/test/.*\\.(test|spec)?\\.(ts|tsx)$",
-    "moduleFileExtensions": [
-      "ts",
-      "js"
-    ]
   },
   "eslintConfig": {
     "root": true,
