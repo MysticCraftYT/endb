@@ -7,6 +7,7 @@ Docma.create()
 	.build({
 		dest: './docs',
 		debug: 16,
+		clean: true,
 		app: {
 			title: Package.name,
 			meta: [
