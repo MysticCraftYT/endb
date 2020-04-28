@@ -3,8 +3,6 @@ import 'jest';
 
 test('Endb is a class', async () => {
   expect(typeof Endb).toBe('function');
-  // @ts-ignore
-  expect(() => Endb()).toThrowError();
   expect(() => new Endb());
 });
 

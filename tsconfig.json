@@ -5,7 +5,7 @@
     "allowJs": true,
     "declaration": true,
     "outDir": "./dist",
-    "rootDir": "./src",
+    "rootDir": "./",
     "strict": true,
     "moduleResolution": "node",
     "esModuleInterop": true
@@ -15,6 +15,5 @@
     "readme": "README.md",
     "out": "docs",
     "hideGenerator": true
-  },
-  "include": ["src", "test"]
+  }
 }

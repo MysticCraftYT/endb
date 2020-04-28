@@ -1,5 +1,4 @@
 import Endb from '../../src';
-// @ts-ignore
 import { adapterTest, endbTest } from '../functions';
 
 adapterTest(Endb, 'sqlite://test.sqlite');

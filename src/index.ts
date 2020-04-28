@@ -13,7 +13,9 @@ const adapters = {
   sqlite: './adapters/sqlite',
 };
 
-const loadStore = <TVal>(options: Partial<Endb.EndbOptions<TVal>>): Endb.EndbAdapter<TVal> => {
+const loadStore = <TVal>(
+  options: Partial<Endb.EndbOptions<TVal>>
+): Endb.EndbAdapter<TVal> => {
   const validAdapters = Object.keys(adapters);
   let adapter: void | keyof typeof adapters;
   if (options.adapter) {
@@ -50,7 +52,7 @@ class Endb<TVal> extends EventEmitter {
       serialize: stringify,
       deserialize: parse,
       store: loadStore(options),
-      ...options
+      ...options,
     };
 
     if (typeof this.options.store.on === 'function') {
