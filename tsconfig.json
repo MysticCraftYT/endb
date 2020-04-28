@@ -16,9 +16,10 @@
     "readme": "README.md",
     "out": "docs",
     "hideGenerator": true,
-    "json": "docs.json",
+    "json": "docs/docs.json",
     "excludePrivate": true,
     "excludeProtected": true,
-    "excludeExternals": true
+    "excludeExternals": true,
+    "exclude": "**/*+(index|.spec|.e2e).ts"
   }
 }
