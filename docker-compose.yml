@@ -8,17 +8,14 @@ services:
     redis:
         image: redis:latest
         <<: *silent
-        container_name: 'endb-redis'
 
     mongo:
         image: mongo:latest
         <<: *silent
-        container_name: 'endb-mongodb'
 
     mysql:
         image: mysql:5
         <<: *silent
-        container_name: 'endb-mysql'
         environment:
             MYSQL_RANDOM_ROOT_PASSWORD: 'yes'
             MYSQL_USER: mysql
@@ -28,7 +25,6 @@ services:
     postgres:
         image: postgres:latest
         <<: *silent
-        container_name: 'endb-postgres'
         command: ['-c', 'max_connections=200']
         environment: 
             POSTGRES_USER: postgres
