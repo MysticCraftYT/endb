@@ -1,13 +1,11 @@
 
 <html><head></head><body><p><img src="media/logo.png" alt="Endb" style="max-width: 100%;"></p>
-<h1 id="endb--">Endb · <a href="https://github.com/chroventer/endb"><img src="https://github.com/chroventer/endb/workflows/Test/badge.svg" alt="Test" style="max-width: 100%;"></a> <a href="https://www.npmjs.com/package/endb"><img src="https://badgen.net/npm/dt/endb" alt="Downloads" style="max-width: 100%;"></a> <a href="https://github.com/chroventer/endb"><img src="https://badgen.net/github/stars/chroventer/endb" alt="GitHub Stars" style="max-width: 100%;"></a> <a href="https://github.com/chroventer/endb/blob/master/LICENSE"><img src="https://badgen.net/github/license/chroventer/endb" alt="License" style="max-width: 100%;"></a></h1>
+<h1 id="endb--">Endb · <a href="https://github.com/chroventer/endb"><img src="https://github.com/chroventer/endb/workflows/Test/badge.svg" alt="Test" style="max-width: 100%;"></a> <a href="https://coveralls.io/github/chroventer/endb?branch=master"><img src="https://coveralls.io/repos/github/chroventer/endb/badge.svg?branch=master" alt="Coverage Status" style="max-width: 100%;"></a> <a href="https://www.npmjs.com/package/endb"><img src="https://badgen.net/npm/dt/endb" alt="Downloads" style="max-width: 100%;"></a> <a href="https://github.com/chroventer/endb"><img src="https://badgen.net/github/stars/chroventer/endb" alt="GitHub Stars" style="max-width: 100%;"></a> <a href="https://github.com/chroventer/endb/blob/master/LICENSE"><img src="https://badgen.net/github/license/chroventer/endb" alt="License" style="max-width: 100%;"></a></h1>
 <hr />
-<blockquote>
-<p>Simple key-value storage with support for multiple backends.</p>
-</blockquote>
+<p>Endb is a simple key-value storage for multiple database drivers. Supports MongoDB, MySQL, Postgres, Redis, and SQLite.</p>
 <ul>
 <li><a href="#usage"><strong>Easy-to-use</strong></a>: Endb has a simplistic and convenient promise-based API.</li>
-<li><a href="#usage"><strong>Adapters</strong></a>: By default, data is cached in memory. Optionally, install and utilize a "storage adapter".</li>
+<li><a href="#usage"><strong>Adapters</strong></a>: By default, data is cached in memory. Optionally, install and utilize a supported database driver.</li>
 <li><a href="#third-party-adapters"><strong>Third-Party Adapters</strong></a>: You can optionally utilize third-party storage adapters or build your own.</li>
 <li><a href="#namespaces"><strong>Namespaces</strong></a>: Namespaces isolate elements within the database to enable useful functionalities.</li>
 <li><a href="#custom-serializers"><strong>Custom Serializers</strong></a>: Utilizes its own data serialization methods to ensure consistency across various storage backends.</li>
@@ -19,8 +17,8 @@
 <hr />
 <p><strong>Node.js 12.x or newer is required.</strong></p>
 <pre><code class="shell">npm install endb</code></pre>
-<p>By default, data is cached in memory. Optionally, install and utilize a "storage adapter".
-Officially supported adapters are MongoDB, Redis, MySQL, PostgreSQL, and SQLite.</p>
+<p>By default, data is cached in memory. Optionally, install and utilize a supported database driver.
+Officially supported database drivers are MongoDB, Redis, MySQL, PostgreSQL, and SQLite.</p>
 <pre><code class="shell">npm install mongodb
 npm install redis
 
@@ -64,6 +62,17 @@ await members.get('foo'); // 'members'
 await users.clear(); // undefined
 await users.get('foo'); // undefined
 await members.get('foo'); // 'members'</code></pre>
+<h2 id="official-adapters">Official Adapters</h2>
+<hr />
+<p>The officially supported adapters are covered by many integration tests to guarantee consistent behavior. They are lightweight, efficient wrappers over various database drivers.
+Here is a list of officially supported adapters:</p>
+<ul>
+<li>MongoDB</li>
+<li>MySQL</li>
+<li>PostgreSQL</li>
+<li>Redis</li>
+<li>SQLite</li>
+</ul>
 <h2 id="third-party-adapters">Third-Party Adapters</h2>
 <hr />
 <p>You can optionally utilize third-party storage adapters or build your own.
