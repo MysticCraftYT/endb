@@ -1,10 +1,11 @@
 ![Endb](media/logo.png)
 
-# Endb &middot; [![Test](https://github.com/chroventer/endb/workflows/Test/badge.svg)](https://github.com/chroventer/endb) [![Downloads](https://badgen.net/npm/dt/endb)](https://www.npmjs.com/package/endb) [![GitHub Stars](https://badgen.net/github/stars/chroventer/endb)](https://github.com/chroventer/endb) [![License](https://badgen.net/github/license/chroventer/endb)](https://github.com/chroventer/endb/blob/master/LICENSE)
-> Simple key-value storage with support for multiple backends.
+# Endb &middot; [![Test](https://github.com/chroventer/endb/workflows/Test/badge.svg)](https://github.com/chroventer/endb) [![Coverage Status](https://coveralls.io/repos/github/chroventer/endb/badge.svg?branch=master)](https://coveralls.io/github/chroventer/endb?branch=master) [![Downloads](https://badgen.net/npm/dt/endb)](https://www.npmjs.com/package/endb) [![GitHub Stars](https://badgen.net/github/stars/chroventer/endb)](https://github.com/chroventer/endb) [![License](https://badgen.net/github/license/chroventer/endb)](https://github.com/chroventer/endb/blob/master/LICENSE)
+
+Endb is a simple key-value storage for multiple database drivers. Supports MongoDB, MySQL, Postgres, Redis, and SQLite.
 
 - [**Easy-to-use**](#usage): Endb has a simplistic and convenient promise-based API.
-- [**Adapters**](#usage): By default, data is cached in memory. Optionally, install and utilize a "storage adapter".
+- [**Adapters**](#usage): By default, data is cached in memory. Optionally, install and utilize a supported database driver.
 - [**Third-Party Adapters**](#third-party-adapters): You can optionally utilize third-party storage adapters or build your own.
 - [**Namespaces**](#namespaces): Namespaces isolate elements within the database to enable useful functionalities.
 - [**Custom Serializers**](#custom-serializers): Utilizes its own data serialization methods to ensure consistency across various storage backends.
@@ -20,8 +21,8 @@
 npm install endb
 ```
 
-By default, data is cached in memory. Optionally, install and utilize a "storage adapter".
-Officially supported adapters are MongoDB, Redis, MySQL, PostgreSQL, and SQLite.
+By default, data is cached in memory. Optionally, install and utilize a supported database driver.
+Officially supported database drivers are MongoDB, Redis, MySQL, PostgreSQL, and SQLite.
 
 ```shell
 npm install mongodb
@@ -75,6 +76,17 @@ await users.clear(); // undefined
 await users.get('foo'); // undefined
 await members.get('foo'); // 'members'
 ```
+
+## Official Adapters
+
+The officially supported adapters are covered by many integration tests to guarantee consistent behavior. They are lightweight, efficient wrappers over various database drivers.
+Here is a list of officially supported adapters:
+
+- MongoDB
+- MySQL
+- PostgreSQL
+- Redis
+- SQLite
 
 ## Third-Party Adapters
 
