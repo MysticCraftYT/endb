@@ -1,0 +1,23 @@
+{
+  "name": "endb-mongodb",
+  "version": "1.0.0",
+  "description": "MongoDB adapter for Endb.",
+  "main": "src/index.js",
+  "files": [
+    "src"
+  ],
+  "scripts": {
+    "test": "echo \"Error: run tests from root\" && exit 1"
+  },
+  "author": "chroventer (https://github.com/chroventer)",
+  "license": "MIT",
+  "repository": "github:chroventer/endb",
+  "homepage": "https://github.com/endbjs/endb#homepage",
+  "bugs": "https://github.com/endbjs/endb/issues",
+  "keywords": [
+    "endb",
+    "mongodb",
+    "adapter",
+    "key-value"
+  ]
+}

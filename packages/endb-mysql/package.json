@@ -1,0 +1,17 @@
+{
+  "name": "endb-mysql",
+  "version": "1.0.0",
+  "description": "> TODO: description",
+  "main": "lib/endb-mysql.js",
+  "files": [
+    "lib"
+  ],
+  "scripts": {
+    "test": "echo \"Error: run tests from root\" && exit 1"
+  },
+  "author": "chroventer (https://github.com/chroventer)",
+  "license": "MIT",
+  "repository": "github:chroventer/endb",
+  "homepage": "https://github.com/endbjs/endb#homepage",
+  "bugs": "https://github.com/endbjs/endb/issues"
+}
