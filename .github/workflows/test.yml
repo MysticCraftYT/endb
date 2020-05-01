@@ -8,6 +8,3 @@ jobs:
         uses: actions/checkout@master
       - name: Docker
         run: npm run test:docker
-      - name: Coverage
-        if: success()
-        run: npm run coverage

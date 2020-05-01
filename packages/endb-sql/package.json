@@ -1,26 +1,21 @@
 {
-  "name": "endb-sql",
+  "name": "@endbjs/sql",
   "version": "1.0.0",
   "description": "Parent class for SQL-based adapter for Endb.",
   "main": "src/index.js",
-  "files": [
-    "src"
-  ],
-  "scripts": {
-    "test": "echo \"Error: run tests from root\" && exit 1"
-  },
+  "files": ["src"],
   "author": "chroventer (https://github.com/chroventer)",
   "license": "MIT",
   "repository": "github:chroventer/endb",
   "homepage": "https://github.com/endbjs/endb#homepage",
   "bugs": "https://github.com/endbjs/endb/issues",
-  "keywords": [
-    "endb",
-    "sql",
-    "adapter",
-    "sqlite",
-    "postgresql",
-    "mysql",
-    "key-value"
-  ]
+  "dependencies": {
+    "sql": "0.78.0"
+  },
+  "devDependencies": {
+    "sqlite3": "4.2.0",
+    "@endbjs/endb": "*",
+    "@endbjs/test": "1.0.0",
+    "ava": "3.8.1"
+  }
 }

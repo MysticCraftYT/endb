@@ -3,21 +3,18 @@
   "version": "1.0.0",
   "description": "MongoDB adapter for Endb.",
   "main": "src/index.js",
-  "files": [
-    "src"
-  ],
-  "scripts": {
-    "test": "echo \"Error: run tests from root\" && exit 1"
-  },
+  "files": ["src"],
   "author": "chroventer (https://github.com/chroventer)",
   "license": "MIT",
   "repository": "github:chroventer/endb",
   "homepage": "https://github.com/endbjs/endb#homepage",
   "bugs": "https://github.com/endbjs/endb/issues",
-  "keywords": [
-    "endb",
-    "mongodb",
-    "adapter",
-    "key-value"
-  ]
+  "dependencies": {
+    "mongodb": "3.5.7"
+  },
+  "devDependencies": {
+    "@endbjs/endb": "*",
+    "@endbjs/test": "1.0.0",
+    "ava": "3.8.1"
+  }
 }

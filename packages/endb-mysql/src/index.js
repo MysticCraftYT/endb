@@ -1,21 +1,24 @@
 'use strict';
 
-const mysql = require('mysql2/promise');
-const Sql = require('./sql');
+const { createConnection } = require('mysql2/promise');
+const EndbSql = require('@endbjs/sql');
 
-module.exports = class MySQL extends Sql {
+module.exports = class EndbMysql extends EndbSql {
   constructor(options = {}) {
-    const { uri = 'mysql://localhost' } = options;
+    const opts = {
+      uri: 'mysql://localhost',
+      ...(typeof options === 'string' ? { uri: options }: options)
+    };
     super({
       dialect: 'mysql',
       async connect() {
-        const connection = await mysql.createConnection(uri);
+        const connection = await createConnection(opts.uri);
         return async (sqlString) => {
           const [row] = await connection.execute(sqlString);
           return row;
         };
       },
-      ...options,
+      ...opts,
     });
   }
 };

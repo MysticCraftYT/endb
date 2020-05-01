@@ -1,0 +1,14 @@
+{
+  "name": "@endbjs/test",
+  "version": "1.0.0",
+  "description": "Test functions for Endb.",
+  "main": "src/index.js",
+  "files": [
+    "src"
+  ],
+  "author": "chroventer (https://github.com/chroventer)",
+  "license": "MIT",
+  "repository": "github:chroventer/endb",
+  "homepage": "https://github.com/endbjs/endb#homepage",
+  "bugs": "https://github.com/endbjs/endb/issues"
+}

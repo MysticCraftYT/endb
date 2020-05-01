@@ -1,26 +1,21 @@
 {
-  "name": "endb-postgres",
+  "name": "@endbjs/postgres",
   "version": "1.0.0",
-  "description": "> TODO: description",
-  "author": "chroventer <ayyanlewis@gmail.com>",
-  "homepage": "https://endb.js.org/packages/endb-postgres",
-  "license": "ISC",
-  "main": "lib/endb-postgres.js",
-  "directories": {
-    "lib": "lib",
-    "test": "__tests__"
+  "description": "PostgreSQL adapter for Endb.",
+  "main": "src/index.js",
+  "files": ["src"],
+  "author": "chroventer (https://github.com/chroventer)",
+  "license": "MIT",
+  "repository": "github:chroventer/endb",
+  "homepage": "https://github.com/endbjs/endb#homepage",
+  "bugs": "https://github.com/endbjs/endb/issues",
+  "dependencies": {
+    "pg": "8.0.3"
   },
-  "files": [
-    "lib"
-  ],
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/chroventer/endb.git"
-  },
-  "scripts": {
-    "test": "echo \"Error: run tests from root\" && exit 1"
-  },
-  "bugs": {
-    "url": "https://github.com/chroventer/endb/issues"
+  "devDependencies": {
+    "@endbjs/endb": "*",
+    "@endbjs/sql": "1.0.0",
+    "@endbjs/test": "1.0.0",
+    "ava": "3.8.1"
   }
 }

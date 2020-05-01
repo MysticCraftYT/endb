@@ -2,11 +2,22 @@
   "name": "@endbjs/sqlite",
   "version": "1.0.0",
   "description": "SQLite adapter for Endb.",
-  "main": "index.js",
-  "files": ["src"],
+  "main": "src/index.js",
+  "files": [
+    "src"
+  ],
   "author": "chroventer (https://github.com/chroventer)",
   "license": "MIT",
   "repository": "github:chroventer/endb",
   "homepage": "https://github.com/endbjs/endb#homepage",
-  "bugs": "https://github.com/endbjs/endb/issues"
+  "bugs": "https://github.com/endbjs/endb/issues",
+  "dependencies": {
+    "@endbjs/sql": "1.0.0",
+    "sqlite3": "4.2.0"
+  },
+  "devDependencies": {
+    "@endbjs/endb": "*",
+    "@endbjs/test": "1.0.0",
+    "ava": "3.8.1"
+  }
 }

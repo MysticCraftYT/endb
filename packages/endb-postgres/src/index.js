@@ -1,21 +1,24 @@
 'use strict';
 
-const pg = require('pg');
-const Sql = require('./sql');
+const { Pool } = require('pg');
+const EndbSql = require('@endbjs/sql');
 
-module.exports = class PostgreSQL extends Sql {
+module.exports = class EndbPostgres extends EndbSql {
   constructor(options = {}) {
-    const { uri = 'postgresql://localhost:5432' } = options;
+    const opts = {
+      uri: 'postgresql://localhost:5432',
+      ...(typeof options === 'string' ? { uri: options } : options),
+    };
     super({
       dialect: 'postgres',
       async connect() {
-        const pool = new pg.Pool({ connectionString: uri });
+        const pool = new Pool({ connectionString: opts.uri });
         return Promise.resolve(async (sqlString) => {
           const { rows } = await pool.query(sqlString);
           return rows;
         });
       },
-      ...options,
+      ...opts,
     });
   }
 };

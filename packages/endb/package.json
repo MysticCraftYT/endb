@@ -3,12 +3,7 @@
   "version": "1.0.0",
   "description": "Simple key-value storage with support for multiple backends.",
   "main": "src/index.js",
-  "files": [
-    "src"
-  ],
-  "scripts": {
-    "test": "echo \"Error: run tests from root\" && exit 1"
-  },
+  "files": ["src"],
   "author": "chroventer (https://github.com/chroventer)",
   "license": "MIT",
   "repository": "github:chroventer/endb",
@@ -18,16 +13,8 @@
     "buffer-json": "^2.0.0",
     "lodash": "^4.17.15"
   },
-  "keywords": [
-    "endb",
-    "key-value",
-    "cache",
-    "javascript",
-    "nodejs",
-    "mongodb",
-    "mysql",
-    "postgresql",
-    "redis",
-    "sqlite"
-  ]
+  "devDependencies": {
+    "ava": "3.8.1",
+    "@endbjs/test": "1.0.0"
+  }
 }

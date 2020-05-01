@@ -1,17 +1,20 @@
 {
-  "name": "endb-mysql",
+  "name": "@endbjs/mysql",
   "version": "1.0.0",
-  "description": "> TODO: description",
-  "main": "lib/endb-mysql.js",
-  "files": [
-    "lib"
-  ],
-  "scripts": {
-    "test": "echo \"Error: run tests from root\" && exit 1"
-  },
+  "description": "MySQL/MariaDB adapter for Endb.",
+  "main": "src/index.js",
+  "files": ["src"],
   "author": "chroventer (https://github.com/chroventer)",
   "license": "MIT",
   "repository": "github:chroventer/endb",
   "homepage": "https://github.com/endbjs/endb#homepage",
-  "bugs": "https://github.com/endbjs/endb/issues"
+  "bugs": "https://github.com/endbjs/endb/issues",
+  "dependencies": {
+    "mysql2": "2.1.0",
+    "@endbjs/sql": "1.0.0"
+  },
+  "devDependencies": {
+    "@endbjs/endb": "*",
+    "@endbjs/test": "1.0.0"
+  }
 }

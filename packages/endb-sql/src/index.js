@@ -1,9 +1,9 @@
 'use strict';
 
 const EventEmitter = require('events');
-const sql = require('sql');
+const { Sql } = require('sql');
 
-module.exports = class SQL extends EventEmitter {
+module.exports = class EndbSql extends EventEmitter {
   constructor(options = {}) {
     super();
     this.options = {
@@ -11,7 +11,7 @@ module.exports = class SQL extends EventEmitter {
       keySize: 255,
       ...options,
     };
-    const db = new sql.Sql(this.options.dialect);
+    const db = new Sql(this.options.dialect);
     this.entry = db.define({
       name: this.options.table,
       columns: [
