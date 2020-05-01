@@ -1,5 +1,7 @@
 name: Test
 on: [push, pull_request]
+env:
+  CI: true
 jobs:
   test:
     runs-on: ubuntu-latest
@@ -10,7 +12,7 @@ jobs:
         run: npm run test:docker
       - name: Coverage
         if: success()
-        run: NODE_ENV=test && npm run coverage
+        run: npm run coverage
       - name: Coveralls
         uses: coverallsapp/github-action@master
         with:
