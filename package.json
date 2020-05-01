@@ -24,6 +24,7 @@
     "lint:fix": "xo src --fix",
     "test": "nyc ava --serial",
     "coverage": "nyc report --reporter=text-lcov | coveralls",
+    "coverage:html": "nyc report --reporter=html",
     "test:docker": "docker-compose up --build --abort-on-container-exit --exit-code-from test",
     "posttest:docker": "docker-compose down --rmi local",
     "docs:build": "node docs.js",

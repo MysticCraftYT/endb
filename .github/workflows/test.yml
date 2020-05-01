@@ -10,7 +10,7 @@ jobs:
         run: npm run test:docker
       - name: Coverage
         if: success()
-        run: npm run coverage
+        run: NODE_ENV=test && npm run coverage
       - name: Coveralls
         uses: coverallsapp/github-action@master
         with:
