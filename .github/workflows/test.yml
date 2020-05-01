@@ -7,7 +7,6 @@ env:
 jobs:
   test:
     runs-on: ubuntu-latest
-    container: node:lts-alpine
     services:
       postgres:
         image: 'postgres:latest'
