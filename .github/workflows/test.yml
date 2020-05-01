@@ -10,7 +10,6 @@ jobs:
     services:
       postgres:
         image: 'postgres:latest'
-        command: ['-c', 'max_connection=200']
         env:
           POSTGRES_PASSWORD: endb
           POSTGRES_USER: postgres
