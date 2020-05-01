@@ -14,7 +14,9 @@ jobs:
           POSTGRES_PASSWORD: endb
           POSTGRES_USER: postgres
           POSTGRES_DB: endb_test
-        options: '-c max_connections=200'
+        options: >-
+          -c
+          max_connections=200
       redis:
         image: 'redis:latest'
       mysql:
