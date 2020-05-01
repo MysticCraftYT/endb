@@ -45,9 +45,12 @@
     "lodash": "^4.17.15"
   },
   "devDependencies": {
+    "@commitlint/cli": "^8.3.5",
+    "@commitlint/config-conventional": "*",
     "ava": "^3.7.1",
     "coveralls": "^3.1.0",
     "docma": "^3.2.2",
+    "husky": "^4.2.5",
     "mongodb": "^3.5.6",
     "mysql2": "^2.1.0",
     "nyc": "^15.0.1",
@@ -72,5 +75,15 @@
       "unicorn/explicit-length-check": 0,
       "unicorn/no-fn-reference-in-iterator": 0
     }
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
   }
 }
