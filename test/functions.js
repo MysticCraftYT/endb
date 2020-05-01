@@ -69,7 +69,7 @@ const adapterTest = (test, Endb, options) => {
   });
 
   test.serial.cb('Connection errors are emitted to main class', (t) => {
-    const endb = new Endb(badUri);
+    const endb = new Endb(options);
     endb.on('error', () => {
       t.pass();
       t.end();
