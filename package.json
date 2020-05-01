@@ -27,10 +27,11 @@
   "bugs": "https://github.com/chroventer/endb/issues",
   "dependencies": {},
   "devDependencies": {
+    "@commitlint/cli": "^8.3.5",
+    "@commitlint/config-angular": "8.3.4",
     "ava": "^3.7.1",
-    "coveralls": "^3.1.0",
     "lerna": "^3.20.2",
-    "nyc": "^15.0.1",
+    "husky": "^4.2.5",
     "xo": "^0.30.0"
   },
   "ava": {
@@ -48,5 +49,15 @@
       "unicorn/explicit-length-check": 0,
       "unicorn/no-fn-reference-in-iterator": 0
     }
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-angular"
+    ]
   }
 }
