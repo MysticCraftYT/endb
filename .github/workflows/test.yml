@@ -31,9 +31,16 @@ jobs:
       - name: Installation
         run: npm install
       - name: Run tests and build coverage
-        run: |
-          npm test
-          npm run coverage
+        run: npm run test
+        env:
+          REDIS_HOST: redis
+          MONGO_HOST: mongo
+          POSTGRES_HOST: postgres
+          POSTGRES_PASSWORD: endb
+          MYSQL_HOST: mysql
+          MYSQL_PASSWORD: endb
+      - name: Build coverage
+        run: npm run coverage
       - name: Coveralls
         uses: coverallsapp/github-action@master
         with:
