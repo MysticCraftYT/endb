@@ -58,7 +58,7 @@ const api = (test, Endb, options = {}) => {
 	});
 };
 
-const adapter = (test, Endb, options) => {
+const adapter = (test, Endb, options = {}) => {
 	test.serial('URI automatically loads the storage adapters', async (t) => {
 		const endb = new Endb(options);
 		await endb.clear();
