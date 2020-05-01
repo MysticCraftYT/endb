@@ -10,6 +10,7 @@ jobs:
     services:
       postgres:
         image: 'postgres:latest'
+        options: ['-c', 'max_connections=200']
         env:
           POSTGRES_PASSWORD: endb
           POSTGRES_USER: postgres
@@ -25,6 +26,8 @@ jobs:
           MYSQL_DATABASE: endb_test
       mongodb:
         image: mongo:latest
+      volumes:
+        - ./:/repo
     steps:
       - name: Checkout repository
         uses: actions/checkout@master
