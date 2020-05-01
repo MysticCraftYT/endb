@@ -1,6 +1,6 @@
 {
-  "name": "endb",
-  "version": "0.22.9",
+  "name": "@endbjs/endb",
+  "version": "1.0.0",
   "description": "Simple key-value storage with support for multiple backends.",
   "main": "src/index.js",
   "files": [

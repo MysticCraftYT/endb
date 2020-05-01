@@ -1,5 +1,5 @@
 {
-  "name": "endb-mongodb",
+  "name": "@endbjs/mongo",
   "version": "1.0.0",
   "description": "MongoDB adapter for Endb.",
   "main": "src/index.js",

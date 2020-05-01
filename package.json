@@ -25,7 +25,6 @@
   "homepage": "https://endb.js.org",
   "repository": "chroventer/endb",
   "bugs": "https://github.com/chroventer/endb/issues",
-  "dependencies": {},
   "devDependencies": {
     "@commitlint/cli": "^8.3.5",
     "@commitlint/config-angular": "8.3.4",
