@@ -34,13 +34,6 @@ jobs:
         run: |
           npm test
           npm run coverage
-        env:
-          REDIS_HOST: redis
-          MONGO_HOST: mongo
-          POSTGRES_HOST: postgres
-          POSTGRES_PASSWORD: endb
-          MYSQL_HOST: mysql
-          MYSQL_PASSWORD: endb
       - name: Coveralls
         uses: coverallsapp/github-action@master
         with:
