@@ -1,19 +1,53 @@
 name: Test
-on: [push, pull_request]
+'on':
+  - push
+  - pull_request
 env:
   CI: true
 jobs:
   test:
     runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: 'postgres:latest'
+        env:
+          POSTGRES_PASSWORD: endb
+          POSTGRES_USER: postgres
+          POSTGRES_DB: endb_test
+        options: '-c max_connections=200'
+      redis:
+        image: 'redis:latest'
+      mysql:
+        image: 'mysql:5'
+        env:
+          MYSQL_RANDOM_ROOT_PASSWORD: 'yes'
+          MYSQL_USER: mysql
+          MYSQL_PASSWORD: endb
+          MYSQL_DATABASE: endb_test
+      mongodb:
+        image: mongo:latest
     steps:
       - name: Checkout repository
         uses: actions/checkout@master
-      - name: Docker
-        run: npm run test:docker
+      - name: Install Node
+        uses: actions/setup-node@master
+        with:
+          node-version: 12
+      - name: Installation
+        run: npm install
+      - name: Run tests
+        run: npm run test
+        env:
+          REDIS_HOST: redis
+          MONGO_HOST: mongo
+          POSTGRES_HOST: postgres
+          POSTGRES_PASSWORD: endb
+          MYSQL_HOST: mysql
+          MYSQL_PASSWORD: endb
       - name: Coverage
         if: success()
         run: npm run coverage
       - name: Coveralls
         uses: coverallsapp/github-action@master
         with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
+          github-token: '${{ secrets.GITHUB_TOKEN }}'
