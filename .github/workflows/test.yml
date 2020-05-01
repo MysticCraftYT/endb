@@ -7,4 +7,6 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@master
       - name: Docker
-        run: npm run test:docker
+        run: yarn test:docker
+      - name: Posttest
+        run: yarn posttest:docker

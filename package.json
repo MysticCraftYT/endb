@@ -1,13 +1,14 @@
 {
   "private": true,
-  "workspaces": ["packages/*"],
+  "workspaces": [
+    "packages/*"
+  ],
   "scripts": {
-    "lint": "xo src",
-    "lint:fix": "xo src --fix",
+    "lint": "xo packages/*",
+    "lint:fix": "yarn lint --fix",
     "test": "ava --serial",
     "test:docker": "docker-compose up --build --abort-on-container-exit --exit-code-from test",
-    "posttest:docker": "docker-compose down --rmi local",
-    "release": "lerna publish"
+    "posttest:docker": "docker-compose down --rmi local"
   },
   "keywords": [
     "endb",
